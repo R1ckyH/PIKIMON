@@ -1,0 +1,25 @@
+1-25
+	Little_Mine(gold);
+	Little_forest(grass)
+	Creek(water)
+	Little_volcanic(fire)
+	Flat_Land(rock);
+
+26-50
+	Middle_Mine(gold);
+	Middle_forest(grass)
+	Lake(water)
+	Middle_volcanic(fire)
+	Middle_Land(rock);
+51-75
+	Mine(gold);
+	Forest(grass)
+	River(water)
+	Volcanic(fire)
+	Land(rock);
+76-100
+	Huge_Mine(gold);
+	Huge_forest(grass)
+	Sea(water)
+	Huge_volcanic(fire)
+	Huge_Land(rock);

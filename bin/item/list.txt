@@ -1,0 +1,15 @@
+EXAMPLE:
+BALL(30%)0
+BALL(50%)0
+BALL(75%)0
+BALL(100%)0
+HP(full)0
+HP(500)0
+HP(300)0
+HP(100)0
+respown(FULL)0
+respown([one]full)0
+respown([one]half)0
+PP(FULL)0
+PP(10)0
+PP(5)0
