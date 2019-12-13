@@ -77,7 +77,7 @@ void delay(int milli_seconds){
         ;
 }
 
-void printf_xy(int x, int y, const char * format, ...){
+void printf_xy(int x, int y, const char * format, ...){//print with xy
 	gotoxy(x, y);
 	va_list args;
 	va_start(args, format);
@@ -85,7 +85,7 @@ void printf_xy(int x, int y, const char * format, ...){
 	va_end(args);
 }
 
-void printf_c(int c, const char * format, ...){
+void printf_c(int c, const char * format, ...){//print with color
 	color(c);
 	va_list args;
 	va_start(args, format);
@@ -93,7 +93,7 @@ void printf_c(int c, const char * format, ...){
 	va_end(args);
 }
 
-void printf_cxy(int c, int x, int y, const char * format, ...){
+void printf_cxy(int c, int x, int y, const char * format, ...){//with xy and color
 	color(c);
 	gotoxy(x, y);
 	va_list args;
@@ -817,7 +817,7 @@ int print_photo(char c[10001], int x, int y, int type){//0 for photo 1 for ball.
 	return y;
 }
 
-int plot(char d[10]){
+int plot(char d[10]){//new player plot
  	int i;
 	FILE*fp;
 	int x, y, j;
@@ -1031,7 +1031,7 @@ int start(char a[], int c){
 	return start(a, 0);
 }
 
-int version(char a[]){
+int version(char a[]){//????? :)
 	printf("________________________________________________________________________________\n");
 	delay(25);
 	printf("Readying for 0.3.1\n");
@@ -1082,7 +1082,7 @@ int save_position(int a, char f[1000], int x, int y, char c, int map){
 	system("cls");
 }
 
-int print_color(char c, int map){
+int print_color(char c, int map){//print color of map
 	if(c == '!'){
 		printf_c(mpcol[0], "!");
 	}else if(c == '\\' || c == '/'){
@@ -1108,7 +1108,7 @@ int print_color(char c, int map){
 	color(7);
 }
 
-int bag(char d[100]){
+int bag(char d[100]){//bag of player
 	system("cls");
 	FILE*fp;
 	int c, hp[3], lv[3], exp[3], i, atk, amr, mhp;
@@ -1179,7 +1179,7 @@ int bag(char d[100]){
 	getch();
 }
 
-int addhp(char command[10], char d[100]){
+int addhp(char command[10], char d[100]){//hospital use???
 	FILE*fp;
 	char l[999] = {"./userdata/"};
 	long long i, c, lv[4], hp[4], exp[4], mexp, nexp = 0;
@@ -1187,51 +1187,51 @@ int addhp(char command[10], char d[100]){
 	strcat(l, d);
 	strcat(l, "/pikimon.txt");
 	if(strcmp(command, "all") == 0){
-	fp = fopen(l, "r");
-	if(fp == NULL){
-		printf("%s BUGGGGGGGGGGGGGGG", l);
-		getch();
-	}
-	fscanf(fp, "%lld", &c);
-	for(i = 0; i < c; i++){
-		fscanf(fp, "%s", p[i]);
-		fscanf(fp, "%lld", &lv[i]);
-		fscanf(fp, "%lld", &hp[i]);
-		fscanf(fp, "%lld", &exp[i]);
-	}
-	fclose(fp);
-	for(i = 0; i < c; i++){
-		if(strcmp(p[i],"bat") == 0){
-			hp[i] = lv[i] * fig[0][0];
-		}else if(strcmp(p[i], "gold") == 0){
-			hp[i] = lv[i] * fig[1][0];
-		}else if(strcmp(p[i], "wood") == 0){
-			hp[i] = lv[i] * fig[2][0];
-		}else if(strcmp(p[i], "water") == 0){
-			hp[i] = lv[i] * fig[3][0];
-		}else if(strcmp(p[i], "fire") == 0){
-			hp[i] = lv[i] * fig[4][0];
-		}else if(strcmp(p[i], "rock") == 0){
-			hp[i] = lv[i] * fig[5][0];
+		fp = fopen(l, "r");
+		if(fp == NULL){
+			printf("%s BUGGGGGGGGGGGGGGG", l);
+			getch();
 		}
-	}
-	fp = fopen(l, "w");
-	if(fp == NULL){
-		printf("%s BUGGGGGGGGGGGGGGG", l);
-		getch();
-	}
-	fprintf(fp, "%lld\n", c);
-	for(i = 0; i < c; i++){
-		fprintf(fp, "%s\n", p[i]);
-		fprintf(fp, "%lld\n", lv[i]);
-		fprintf(fp, "%lld\n", hp[i]);
-		fprintf(fp, "%lld\n", exp[i]);
-	}
-	fclose(fp);
+		fscanf(fp, "%lld", &c);
+		for(i = 0; i < c; i++){
+			fscanf(fp, "%s", p[i]);
+			fscanf(fp, "%lld", &lv[i]);
+			fscanf(fp, "%lld", &hp[i]);
+			fscanf(fp, "%lld", &exp[i]);
+		}
+		fclose(fp);
+		for(i = 0; i < c; i++){
+			if(strcmp(p[i],"bat") == 0){
+				hp[i] = lv[i] * fig[0][0];
+			}else if(strcmp(p[i], "gold") == 0){
+				hp[i] = lv[i] * fig[1][0];
+			}else if(strcmp(p[i], "wood") == 0){
+				hp[i] = lv[i] * fig[2][0];
+			}else if(strcmp(p[i], "water") == 0){
+				hp[i] = lv[i] * fig[3][0];
+			}else if(strcmp(p[i], "fire") == 0){
+				hp[i] = lv[i] * fig[4][0];
+			}else if(strcmp(p[i], "rock") == 0){
+				hp[i] = lv[i] * fig[5][0];
+			}
+		}
+		fp = fopen(l, "w");
+		if(fp == NULL){
+			printf("%s BUGGGGGGGGGGGGGGG", l);
+			getch();
+		}
+		fprintf(fp, "%lld\n", c);
+		for(i = 0; i < c; i++){
+			fprintf(fp, "%s\n", p[i]);
+			fprintf(fp, "%lld\n", lv[i]);
+			fprintf(fp, "%lld\n", hp[i]);
+			fprintf(fp, "%lld\n", exp[i]);
+		}
+		fclose(fp);
 	}
 }
 
-int hospital(char d[]){
+int hospital(char d[]){//XD
 	system("cls");
 	color(15);
 	print_photo("./bin/npc/nurse.txt", 0, 0, 0);
@@ -1254,7 +1254,7 @@ int hospital(char d[]){
 	}
 }
 
-int move(char a[20][80], int x, int y, char c, char d[], int map){
+int move(char a[20][80], int x, int y, char c, char d[], int map){//map moverment
 	system("cls");
 	int i, j, fight = 0;
 	for(i = 0; i < 20; i++){
@@ -1289,7 +1289,7 @@ int move(char a[20][80], int x, int y, char c, char d[], int map){
 			bag(d);
 			break;
 		}else if(b == 'w'){
-			if(y == 9 && x == 59 && map == 1){
+			if(y == 9 && x == 59 && map == 1){// saving positions. and change map
 				hospital(d);
 				save_position(0, f, x, y, c, map);
 				return position(d);
@@ -1416,7 +1416,7 @@ int move(char a[20][80], int x, int y, char c, char d[], int map){
 	return move(a, x, y, c, d, map);
 }
 
-int position(char d[]){
+int position(char d[]){//change map
 	char a[20][80] = {0,}, f[1000] = {".\\userdata\\"}, g[1000] = {".\\bin\\map\\map"};
 	strcat(f, d);
 	strcat(f, "\\position.txt");
@@ -1440,7 +1440,7 @@ int position(char d[]){
 	return move(a, x, y, z, d, map);
 }
 
-int touch(int c, char d[], int map){
+int touch(int c, char d[], int map){//probability of monstor
 	int r, m;
 	r = (rand() % 100) + 1;
 	if(map == 2){
@@ -1469,7 +1469,7 @@ int touch(int c, char d[], int map){
 	return 0;
 }
 
-int cal_fight(int s, int plv, char d[]){
+int cal_fight(int s, int plv, char d[]){//cal for hp and attack and armor
 	FILE*fp;
 	int c, i;
 	int lv[4], hp[4], mhp[4], atk[4], amr[4], exp[4];
@@ -1537,7 +1537,7 @@ int cal_fight(int s, int plv, char d[]){
 	fight(d, p, lv, hp, mhp, atk, amr, exp, c);
 }
 
-int color_p(char p[100]){
+int color_p(char p[100]){//color of pikimon
 	if(strcmp(p, "bat") == 0){
 		color(7);
 	}else if(strcmp(p, "gold") == 0){
@@ -1559,7 +1559,7 @@ int cal_atk(int atk, int amr){//????????????????????????????????????????????????
 	return a;
 }
 
-int cal_exp(int addexp, char d[], int pt){
+int cal_exp(int addexp, char d[], int pt){//calculating exp
 	FILE*fp;
 	char l[999] = {"./userdata/"};
 	long long i, c, lv[4], hp[4], exp[4], mexp, nexp = 0;
@@ -1623,6 +1623,7 @@ int cal_exp(int addexp, char d[], int pt){
 	fclose(fp);
 }
 
+//fighting monitor
 int fight(char d[], char p[4][100], int lv[4], int hp[4], int mhp[4], int atk[4], int amr[4], int exp[4], int n){
 	int h, i, j, x, y, pt, dam;
 	char l[5][100];
@@ -1870,7 +1871,7 @@ int fight(char d[], char p[4][100], int lv[4], int hp[4], int mhp[4], int atk[4]
 	system("cls");
 }
 
-int cal_dam(char d[], char p[4][100], int lv[4], int hp[4], int exp[4], int c){
+int cal_dam(char d[], char p[4][100], int lv[4], int hp[4], int exp[4], int c){//cal damage in file
 	FILE*fp;
 	char l[999] = {"./userdata/"};
 	long long i;
@@ -1891,7 +1892,7 @@ int cal_dam(char d[], char p[4][100], int lv[4], int hp[4], int exp[4], int c){
 	fclose(fp);
 }
 
-int catchp(char d[100], char ap[100], int alv, int ahp, int aexp){
+int catchp(char d[100], char ap[100], int alv, int ahp, int aexp){//catch pikimon
 	FILE*fp;
 	char l[999] = {"./userdata/"};
 	long long i, c, lv[4], hp[4], exp[4], mexp, nexp = 0;
@@ -1930,7 +1931,7 @@ int catchp(char d[100], char ap[100], int alv, int ahp, int aexp){
 	}
 }
 
-main(){
+main(){//no use :P
 	srand(time(NULL));
 	system("COLOR 0A");
 	load(0);
